@@ -23,22 +23,22 @@ typed objects, answers with citations, and runs a bounded read-only copilot. Eve
       Commit `docs: initial project context`.
 
 ### Session 2 — ADRs (turn decisions into durable context)
-- [ ] `0001-architecture` (modular monolith + Temporal + RLS; LLM not source of truth)
-- [ ] `0002-llm-autonomy-boundary` (deterministic workflow; copilot = read-only tools only; no `plan()`)
-- [ ] `0003-rls-mechanics` (`SET LOCAL app.org_id` in a txn; `tenant_context()` for workers; two DB roles)
-- [ ] `0004-auth` (cookie session + CSRF; browser → Next route handlers → DRF; `Org`/`User`/`InboundRoute` global;
+- [x] `0001-architecture` (modular monolith + Temporal + RLS; LLM not source of truth)
+- [x] `0002-llm-autonomy-boundary` (deterministic workflow; copilot = read-only tools only; no `plan()`)
+- [x] `0003-rls-mechanics` (`SET LOCAL app.org_id` in a txn; `tenant_context()` for workers; two DB roles)
+- [x] `0004-auth` (cookie session + CSRF; browser → Next route handlers → DRF; `Org`/`User`/`InboundRoute` global;
       the Meta webhook is the one direct, signature-verified exception)
-- [ ] `0005-org-resolution` (`InboundRoute` for WhatsApp; simulator org from session, never the body; signed
+- [x] `0005-org-resolution` (`InboundRoute` for WhatsApp; simulator org from session, never the body; signed
       token embeds `org_id` for approvals; suppliers per-org)
-- [ ] `0006-policy-single-source` (policy owns thresholds; `Decision` = allow/require_approval/deny + `reasons[]`;
+- [x] `0006-policy-single-source` (policy owns thresholds; `Decision` = allow/require_approval/deny + `reasons[]`;
       approval → re-eval → allow; token identifies / session authorizes; `system` actor can't approve)
-- [ ] `0007-data-shape` (`Decimal(12,2)`; line items end to end; single-supplier award; `Document`/`DocumentChunk`+`page`;
+- [x] `0007-data-shape` (`Decimal(12,2)`; line items end to end; single-supplier award; `Document`/`DocumentChunk`+`page`;
       role enum + code perm-map)
-- [ ] `0008-temporal-vs-celery` (Temporal for the workflow on its own DB; Celery from P2 for OCR/voice, then benchmark/embeddings)
-- [ ] `0009-eval-strategy` (recorded cassettes in CI, miss = fail, re-record in same PR; metrics ramp; classifier data held out)
-- [ ] `0010-demo-llm-and-host` (local Ollama for the public demo; free tier = dev-synthetic only; Oracle ARM 24 GB host;
+- [x] `0008-temporal-vs-celery` (Temporal for the workflow on its own DB; Celery from P2 for OCR/voice, then benchmark/embeddings)
+- [x] `0009-eval-strategy` (recorded cassettes in CI, miss = fail, re-record in same PR; metrics ramp; classifier data held out)
+- [x] `0010-demo-llm-and-host` (local Ollama for the public demo; free tier = dev-synthetic only; Oracle ARM 24 GB host;
       cost figures from prod prices × recorded tokens)
-- [ ] Commit `docs: foundational ADRs`.
+- [x] Commit `docs: foundational ADRs`.
 
 ### Sessions 3+ — build, one task per session, via `/next-task`
 Plan mode → approve → edit → `make test`+`make lint` (paste) → tick box → commit → `/clear`.
