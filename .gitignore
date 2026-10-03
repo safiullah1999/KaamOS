@@ -1,0 +1,66 @@
+# --- Secrets & local config ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+celerybeat-schedule*
+
+# --- Django ---
+backend/staticfiles/
+backend/media/
+*.sqlite3
+
+# --- Node / Next.js ---
+node_modules/
+frontend/.next/
+frontend/out/
+*.tsbuildinfo
+next-env.d.ts
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Local data, models & caches (Docker volumes, Ollama/HF weights, uploads) ---
+infra/data/
+.data/
+models/
+*.gguf
+*.safetensors
+
+# --- AI evals: keep golden set + recorded cassettes; ignore local live-run output ---
+backend/ai/evals/reports/
+backend/ai/evals/.live/
+
+# --- Terraform ---
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# --- IDE / OS ---
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Claude Code: commit shared commands, ignore personal settings ---
+.claude/settings.local.json
+
+# --- Misc ---
+*.log
+files.zip
